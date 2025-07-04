@@ -1,10 +1,13 @@
 package demoqa.tests;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import com.codeborne.selenide.Configuration;
 import demoqa.pages.RegistrationPage;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -19,25 +22,28 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Tag("selenoid")
 public class TextBoxTests {
 
+//    @BeforeAll
+//    static void beforeAll() throws MalformedURLException {
+//        Configuration.browser = "chrome";
+//        Configuration.browserVersion = "128.0";
+////        Configuration.holdBrowserOpen = true;
+//        Configuration.timeout = 10000;
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.baseUrl = "https://demoqa.com";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+//    }
+
+    static WebDriver driver;
+
     @BeforeAll
-    static void beforeAll() throws MalformedURLException {
-        Configuration.browser = "chrome";
-        Configuration.browserVersion = "128.0";
-//        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 10000;
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = "http://localhost:4444/wd/hub";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-
-        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            put("enableVNC", true);
-            put("enableVideo", true);
-        }});
-        Configuration.browserCapabilities = capabilities;
+    public static void setup() throws MalformedURLException {
+        ChromeOptions options = new ChromeOptions();
+        options.setCapability("enableVNC", true);
+        options.setCapability("enableVideo", true);
+        driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
     }
 
     @Test

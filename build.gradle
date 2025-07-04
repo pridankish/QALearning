@@ -53,3 +53,9 @@ task simple_test(type: Test) {
         includeTags 'simple'
     }
 }
+
+task selenoid_test(type: Test) {
+    useJUnitPlatform {
+        includeTags 'selenoid'
+    }
+}
