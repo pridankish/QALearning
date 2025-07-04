@@ -14,7 +14,7 @@ public class RegistrationWithRandomDataTests extends TestData {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = "safari";
+//        Configuration.browser = "safari";
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "http://localhost:4444/wd/hub";

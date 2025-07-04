@@ -15,7 +15,7 @@ public class TextBoxTests {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = "safari";
+//        Configuration.browser = "safari";
 //        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 10000;
         Configuration.browserSize = "1920x1080";
