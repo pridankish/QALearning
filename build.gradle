@@ -23,6 +23,10 @@ repositories {
 
 def assertjVersion = "3.23.1"
 
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation (
             "com.codeborne:selenide:6.10.3",
@@ -43,3 +47,9 @@ test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
 }
+
+//task simple_test(type: Test) {
+//    useJUnitPlatform {
+//        includeTags 'simple'
+//    }
+//}
