@@ -5,6 +5,14 @@ import org.junit.jupiter.api.Test;
 
 import com.codeborne.selenide.Configuration;
 import demoqa.pages.RegistrationPage;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -14,13 +22,22 @@ import static com.codeborne.selenide.Selenide.*;
 public class TextBoxTests {
 
     @BeforeAll
-    static void beforeAll() {
-//        Configuration.browser = "safari";
+    static void beforeAll() throws MalformedURLException {
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "128.0";
 //        Configuration.holdBrowserOpen = true;
         Configuration.timeout = 10000;
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "http://localhost:4444/wd/hub";
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        capabilities.setCapability("selenoid:options", new HashMap<String, Object>() {{
+            put("enableVNC", true);
+            put("enableVideo", true);
+        }});
+        Configuration.browserCapabilities = capabilities;
     }
 
     @Test
