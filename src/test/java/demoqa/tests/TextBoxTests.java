@@ -41,6 +41,7 @@ public class TextBoxTests {
     @BeforeAll
     public static void setup() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions();
+        options.setCapability("browserName", "chrome");
         options.setCapability("enableVNC", true);
         options.setCapability("enableVideo", true);
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
