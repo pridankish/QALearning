@@ -43,6 +43,11 @@ dependencies {
 //    options.encoding = 'UTF-8'
 //}
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
