@@ -59,3 +59,9 @@ task selenoid_test(type: Test) {
         includeTags 'selenoid'
     }
 }
+
+task one_property_test(type: Test) {
+    useJUnitPlatform {
+        includeTags 'one_property'
+    }
+}
